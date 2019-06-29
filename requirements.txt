@@ -1,0 +1,6 @@
+#pip install -r requeriments.txt
+
+django(==2.2)
+django.jet
+dnspython
+djongo
