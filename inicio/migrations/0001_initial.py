@@ -27,6 +27,5 @@ class Migration(migrations.Migration):
                 ('nombre', models.CharField(blank=True, max_length=100)),
                 ('precio', models.FloatField(blank=True)),
             ],
-            bases=('inicio.foto',),
         ),
     ]

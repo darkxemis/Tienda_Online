@@ -4,3 +4,11 @@ django(==2.2)
 django.jet
 dnspython
 djongo
+django-image-cropping
+easy-thumbnails
+ipdb
+django-money
+
+
+#Cambio de moneda echar un vistazo esta pagina -> https://github.com/django-money/django-money
+

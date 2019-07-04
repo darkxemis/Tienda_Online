@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inicio',
+    'image_cropping',
+    'easy_thumbnails',
+    'djmoney',
 ]
 
 MIDDLEWARE = [
@@ -76,16 +79,16 @@ WSGI_APPLICATION = 'Tienda_Online.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}'''
+}
 
 #Database de mongodb en un servidor llamado: https://mlab.com/
 #https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'TiendaOnline',
@@ -94,7 +97,7 @@ DATABASES = {
         'PASSWORD': 'josemi',
 
     }
-}
+}'''
 
 
 # Password validation
@@ -133,12 +136,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

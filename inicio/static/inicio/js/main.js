@@ -72,7 +72,7 @@
     fade: true,
     asNavFor: '#product-imgs',
   });
-
+	
 	// Product imgs Slick
   $('#product-imgs').slick({
     slidesToShow: 3,
@@ -125,17 +125,11 @@
 		})
 	});
 
-	var priceInputMax = document.getElementById('price-max'),
-			priceInputMin = document.getElementById('price-min');
-
-	priceInputMax.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
-
-	priceInputMin.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
-
+	//var priceInputMax = document.getElementById('price-max'),
+	//		priceInputMin = document.getElementById('price-min');
+	var priceInputMax = document.getElementById('1000000'),
+		priceInputMin = document.getElementById('0');
+	
 	function updatePriceSlider(elem , value) {
 		if ( elem.hasClass('price-min') ) {
 			console.log('min')
@@ -145,6 +139,14 @@
 			priceSlider.noUiSlider.set([null, value]);
 		}
 	}
+
+	priceInputMax.addEventListener('change', function(){
+		updatePriceSlider($(this).parent() , this.value)
+	});
+
+	priceInputMin.addEventListener('change', function(){
+		updatePriceSlider($(this).parent() , this.value)
+	});
 
 	// Price Slider
 	var priceSlider = document.getElementById('price-slider');

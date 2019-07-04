@@ -1,5 +1,7 @@
 {% extends "main.html" %}
 
+{% load cropping %}
+
 {%block content%}
 
 	<body>
@@ -9,17 +11,27 @@
 				<!-- row -->
 				<div class="row">
 					<!-- shop -->
-					{% for i in articulos %}
+					{% for i in articuloimagen %}
 						<div class="col-md-4 col-xs-6">
-							<div class="shop">   
-								<div>
-									<a href="articulo/{{ i.id }}/"> {{ i.id }}>
-										<img src="/media/{{i.foto}}" alt="foto" width="210px" height="200px" style="float: right">
-									</a>
+							<div class="shop"> 
+								<div class="shop-img">
+									<img src="/media/{{i.imagenes_articulos.all.first.foto}}" alt="foto" width="210px" height="200px" style="float: right">
+									<!--<a href="articulo/{{ i.id }}/"> {{ i.id }}>
+										<img src="/media/{{i.imagenes_articulos.all.first.foto}}" alt="foto" width="210px" height="200px" style="float: right">
+									</a>-->
 								</div>
+								<!--{% for e in i.imagenes_articulos.all %}
+									<div>
+										<a href="articulo/{{ i.id }}/"> {{ i.id }}>
+											<img src="/media/{{e.foto}}" alt="foto" width="210px" height="200px" style="float: right">
+										</a>
+									</div>
+								{% endfor %}-->
+
 								<div class="shop-body">
-									<h3>{{ i.nombre }}<br>{{ i.precio }} € </h3>
-							</div>
+									<h3>{{ i.nombre }}<br>{{ i.precio }}  </h3>
+									<a href="articulo/{{ i.id }}/" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								</div>
 							</div>
 						</div>
 					
@@ -33,4 +45,6 @@
 	</body>
 
 {%endblock content%}
+
+
 
