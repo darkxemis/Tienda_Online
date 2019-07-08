@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from django.conf.urls import url
 
@@ -22,11 +22,21 @@ from django.conf.urls.static import serve, static
 
 from django.conf import settings
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('', include('inicio.urls')),
+    re_path('ckeditor/', include('ckeditor_uploader.urls')), #URL para el texto con formato
     #url(r'^media/(?P<path>.*)$', serve, { 'document_root': settings.MEDIA_ROOT, }), 
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+
+        # For django versions before 2.0:
+        # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+    ] + urlpatterns

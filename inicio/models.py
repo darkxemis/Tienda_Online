@@ -2,15 +2,22 @@ from django.db import models
 
 from django.conf import settings
 
+#Import para las imagenes en galleria, si queremos asociar un articulo con más de una imagen
 from image_cropping import ImageRatioField 
 from easy_thumbnails.files import get_thumbnailer
 
+#Import para el campo de moneda
 from djmoney.models.fields import MoneyField
 from django.db import models
+
+#Import para texto con formato APP
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Articulo(models.Model):
 	nombre = models.CharField(max_length=100, blank=True)
 	precio = MoneyField(max_digits=14, decimal_places=2, default_currency='EUR')
+	text = RichTextUploadingField(verbose_name='Texto', null=True, blank=True) 
 
 	def __str__(self):
 		return self.nombre

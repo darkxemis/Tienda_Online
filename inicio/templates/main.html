@@ -1,4 +1,6 @@
 {% load static %}
+{% load compress %}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,24 +11,27 @@
 
 		<title>Electro - HTML Ecommerce Template</title>
 
-		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		{% compress css %}
+		
+			<!-- Google font -->
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/bootstrap.min.css' %}"/>
+			<!-- Bootstrap -->
+			<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/bootstrap.min.css' %}"/>
 
-		<!-- Slick -->
-		<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/slick.css' %}"/>
-		<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/slick-theme.css' %}"/>
+			<!-- Slick -->
+			<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/slick.css' %}"/>
+			<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/slick-theme.css' %}"/>
 
-		<!-- nouislider -->
-		<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/nouislider.min.css' %}"/>
+			<!-- nouislider -->
+			<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/nouislider.min.css' %}"/>
 
-		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="{% static 'inicio/css/font-awesome.min.css' %}">
+			<!-- Font Awesome Icon -->
+			<link rel="stylesheet" href="{% static 'inicio/css/font-awesome.min.css' %}">
 
-		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/style.css' %}"/>
+			<!-- Custom stlylesheet -->
+			<link type="text/css" rel="stylesheet" href="{% static 'inicio/css/style.css' %}"/>
+		{% endcompress %}
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -284,11 +289,14 @@
 			<!-- /bottom footer -->
 		</footer>
 
-		<script src="{% static 'inicio/js/jquery.min.js' %}"></script> 
-		<script src="{% static 'inicio/js/bootstrap.min.js' %}"></script> 
-		<script src="{% static 'inicio/js/slick.min.js' %}"></script> 
-		<script src="{% static 'inicio/js/nouislider.min.js' %}"></script> 
-		<script src="{% static 'inicio/js/jquery.zoom.min.js' %}"></script> 
-		<script src="{% static 'inicio/js/main.js' %}"></script> 
+		{% compress js %}
+			<script src="{% static 'inicio/js/jquery.min.js' %}"></script> 
+			<script src="{% static 'inicio/js/bootstrap.min.js' %}"></script> 
+			<script src="{% static 'inicio/js/slick.min.js' %}"></script> 
+			<script src="{% static 'inicio/js/nouislider.min.js' %}"></script> 
+			<script src="{% static 'inicio/js/jquery.zoom.min.js' %}"></script> 
+			<script src="{% static 'inicio/js/main.js' %}"></script> 
+		{% endcompress %}
+		
 			
 </html>

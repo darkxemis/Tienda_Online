@@ -25,6 +25,33 @@ SECRET_KEY = 'xz*ktw@^fxmkq+aff%$7x#+z1n-sba4*9ol3(ji=9@1cuemkjo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Nueva aplicación para debugear código con uan toolbar con herramientas
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+DEBUG_TOOLBAR_PANELS = [
+   'debug_toolbar.panels.versions.VersionsPanel',
+   'debug_toolbar.panels.timer.TimerPanel',
+   'debug_toolbar.panels.settings.SettingsPanel',
+   'debug_toolbar.panels.headers.HeadersPanel',
+   'debug_toolbar.panels.request.RequestPanel',
+   'debug_toolbar.panels.sql.SQLPanel',
+   'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+   'debug_toolbar.panels.templates.TemplatesPanel',
+   'debug_toolbar.panels.cache.CachePanel',
+   'debug_toolbar.panels.signals.SignalsPanel',
+   'debug_toolbar.panels.logging.LoggingPanel',
+   'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+DEBUG_TOOLBAR_CONFIG = {
+   'INTERCEPT_REDIRECTS': False,
+}
+
+
+
 ALLOWED_HOSTS = []
 
 
@@ -42,6 +69,9 @@ INSTALLED_APPS = [
     'image_cropping',
     'easy_thumbnails',
     'djmoney',
+    'compressor',
+    'ckeditor',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +82,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware', #He añadido esta línea necesaria para el debug-toolbar
 ]
 
 ROOT_URLCONF = 'Tienda_Online.urls'
@@ -132,11 +163,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+#Esto es para el compressor necesario
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+#Esto es para el compressor necesario
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter',]
+
+#Para texto con formato APP
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Advanced',
+        'width': 758,
+        'height': 300,
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/root')
 #STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 
 STATICFILES_DIRS = (
@@ -148,4 +200,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+
+
 

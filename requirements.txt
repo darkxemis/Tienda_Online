@@ -8,6 +8,9 @@ django-image-cropping
 easy-thumbnails
 ipdb
 django-money
+django-compressor #(Necesitamos la version 14 de Microsoft Visual C++)
+django-ckeditor   #CSS con interfaz
+debug_toolbar     #Toolbar para debugear
 
 
 #Cambio de moneda echar un vistazo esta pagina -> https://github.com/django-money/django-money

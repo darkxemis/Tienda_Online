@@ -10,11 +10,11 @@ class ArticuloFotoInline(ImageCroppingMixin, CompactInline):
 	extra = 0
 
 class AdminArtitulo(admin.ModelAdmin, ImageCroppingMixin):
-	list_display = ['nombre', 'precio']
+	list_display = ['nombre', 'precio', 'text']
 	inlines = [ArticuloFotoInline, ]
 	fieldsets = (
 		(u'contenido', {
-			'fields': ("nombre", "precio")
+			'fields': ("nombre", "precio", 'text')
 			}),
 		)
 
